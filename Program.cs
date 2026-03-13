@@ -19,6 +19,7 @@ builder.Services.AddAutoMapper(o =>
 {
     o.CreateMap<VillaCreateDTO, Villa>();
     o.CreateMap<VillaUpdateDTO, Villa>();
+    o.CreateMap<Villa, VillaDTO>();
 });
 
 var app = builder.Build();
