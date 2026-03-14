@@ -7,6 +7,7 @@ namespace RoyalVilla_API.Context
         : DbContext(options)
     {
         public DbSet<Villa> Villas { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
