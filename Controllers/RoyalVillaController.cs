@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RoyalVilla_API.Context;
@@ -21,6 +22,8 @@ namespace RoyalVilla_API.Controllers
         _context = context;
         _mapper = mapper; 
         }
+
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult <ApiResponse<IEnumerable<VillaDTO>>>> GetVillas(int id)
         {
@@ -30,6 +33,7 @@ namespace RoyalVilla_API.Controllers
             return Ok(response);
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<ApiResponse<VillaDTO>>> GetVillasById(int id)
         {

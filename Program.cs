@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using RoyalVilla_API.Context;
 using RoyalVilla_API.Models;
 using RoyalVilla_API.Models.DTOs;
+using RoyalVilla_API.Services;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,11 +16,14 @@ builder.Services.AddControllers();
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddScoped<IAuthService, AuthService>(); 
 builder.Services.AddAutoMapper(o =>
 {
     o.CreateMap<VillaCreateDTO, Villa>();
     o.CreateMap<VillaUpdateDTO, Villa>();
     o.CreateMap<Villa, VillaDTO>();
+    o.CreateMap<User, UserDTO>();
+    o.CreateMap<UserDTO, User>();
 });
 
 var app = builder.Build();
